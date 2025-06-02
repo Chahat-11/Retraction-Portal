@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis - Retraction Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="analysis-page">
+    <div class="background">
+        <div class="wave-container">
+            <div class="wave"></div>
+            <div class="circular-blur primary-blur"></div>
+            <div class="circular-blur secondary-blur"></div>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-placeholder"></div>
+            <h1>Retraction Portal</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./dataset.html">Dataset Info</a></li>
+                <li><a href="./analysis.html" class="active">Analysis</a></li>
+                <li><a href="./bookmarks.html">Bookmarks</a></li>
+            </ul>
+        </nav>
+        <div class="user-controls">
+            <div class="toggle-container">
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </span>
+                </label>
+            </div>
+            <div class="user-profile">
+                <div class="profile-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-container sidebar-logo">
+                <div class="logo-placeholder"></div>
+                <h1>Portal Name</h1>
+            </div>
+            <h2 class="dashboard-title">Dashboard</h2>
+            
+            <nav class="dashboard-nav">
+                <ul>
+                    <li class="nav-item active">
+                        <a href="#" data-analysis="country">
+                            <i class="fas fa-globe"></i>
+                            Country
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" data-analysis="subject">
+                            <i class="fas fa-book"></i>
+                            Subject
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" data-analysis="institution">
+                            <i class="fas fa-university"></i>
+                            Institution
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" data-analysis="publisher">
+                            <i class="fas fa-building"></i>
+                            Publisher
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" data-analysis="date">
+                            <i class="fas fa-calendar"></i>
+                            Retraction Date
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" data-analysis="author">
+                            <i class="fas fa-user"></i>
+                            Author
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" data-analysis="reason">
+                            <i class="fas fa-question-circle"></i>
+                            Reason for Retraction
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- Retraction Information in Sidebar -->
+            <div class="retraction-info-sidebar">
+                <div class="retraction-item">
+                    <div class="retraction-label">Country</div>
+                    <div class="retraction-value">United States</div>
+                </div>
+                <div class="retraction-item">
+                    <div class="retraction-label">Subject</div>
+                    <div class="retraction-value">Medicine</div>
+                </div>
+                <div class="retraction-item">
+                    <div class="retraction-label">Institution</div>
+                    <div class="retraction-value">Harvard University</div>
+                </div>
+                <div class="retraction-item">
+                    <div class="retraction-label">Publisher</div>
+                    <div class="retraction-value">Elsevier</div>
+                </div>
+                <div class="retraction-item">
+                    <div class="retraction-label">Retraction Date</div>
+                    <div class="retraction-value">2023-05-15</div>
+                </div>
+                <div class="retraction-item">
+                    <div class="retraction-label">Author</div>
+                    <div class="retraction-value">John Smith</div>
+                </div>
+                <div class="retraction-item">
+                    <div class="retraction-label">Reason for Retraction</div>
+                    <div class="retraction-value">Data manipulation</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+
+            <!-- Analysis Content -->
+            <div class="analysis-content">
+                <h2 id="analysis-title">Retraction Analysis Based on Country</h2>
+                
+                <!-- Filters -->
+                <div class="filters">
+                    <div class="filter-group">
+                        <div class="filter-item">
+                            <label>Country</label>
+                            <select id="country-filter">
+                                <option value="">Select Country</option>
+                                <option value="usa">United States</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="china">China</option>
+                                <option value="india">India</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-item">
+                            <label>Year</label>
+                            <select id="year-filter">
+                                <option value="">Select Year</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-item">
+                            <label>Retraction Reason</label>
+                            <select id="reason-filter">
+                                <option value="">Select Reason</option>
+                                <option value="misconduct">Research Misconduct</option>
+                                <option value="error">Error in Data</option>
+                                <option value="plagiarism">Plagiarism</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graph Area -->
+                <div class="graph-container">
+                    <div class="graph">
+                        <!-- Graph will be inserted here -->
+                    </div>
+                    <div class="graph-info">
+                        <div class="description-box">
+                            <h3>Graph Description</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-bookmark">
+                                <i class="fas fa-bookmark"></i>
+                                Bookmark
+                            </button>
+                            <button class="btn-download">
+                                <i class="fas fa-download"></i>
+                                Download Graph
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
