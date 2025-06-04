@@ -6,22 +6,16 @@
     <title>Analysis - Retraction Portal</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="analysis-page">
-    <div class="background">
-        <div class="wave-container">
-            <div class="wave"></div>
-            <div class="circular-blur primary-blur"></div>
-            <div class="circular-blur secondary-blur"></div>
-        </div>
-    </div>
-
+    <!-- Fixed Header -->
     <header>
         <div class="logo-container">
             <div class="logo-placeholder"></div>
             <h1>Retraction Portal</h1>
         </div>
-        <nav>
+        <nav class="main-nav">
             <ul>
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./dataset.html">Dataset Info</a></li>
@@ -50,162 +44,218 @@
     <div class="dashboard-layout">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo-container sidebar-logo">
-                <div class="logo-placeholder"></div>
-                <h1>Portal Name</h1>
-            </div>
-            <h2 class="dashboard-title">Dashboard</h2>
-            
             <nav class="dashboard-nav">
                 <ul>
-                    <li class="nav-item active">
-                        <a href="#" data-analysis="country">
+                    <li class="nav-item active" data-title="Country">
+                        <a href="#country">
                             <i class="fas fa-globe"></i>
                             Country
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" data-analysis="subject">
+                    <li class="nav-item" data-title="Subject">
+                        <a href="#subject">
                             <i class="fas fa-book"></i>
                             Subject
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" data-analysis="institution">
+                    <li class="nav-item" data-title="Institution">
+                        <a href="#institution">
                             <i class="fas fa-university"></i>
                             Institution
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" data-analysis="publisher">
+                    <li class="nav-item" data-title="Publisher">
+                        <a href="#publisher">
                             <i class="fas fa-building"></i>
                             Publisher
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" data-analysis="date">
+                    <li class="nav-item" data-title="Retraction Date">
+                        <a href="#date">
                             <i class="fas fa-calendar"></i>
                             Retraction Date
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" data-analysis="author">
+                    <li class="nav-item" data-title="Author">
+                        <a href="#author">
                             <i class="fas fa-user"></i>
                             Author
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" data-analysis="reason">
+                    <li class="nav-item" data-title="Reason for Retraction">
+                        <a href="#reason">
                             <i class="fas fa-question-circle"></i>
                             Reason for Retraction
                         </a>
                     </li>
                 </ul>
             </nav>
-            
-            <!-- Retraction Information in Sidebar -->
-            <div class="retraction-info-sidebar">
-                <div class="retraction-item">
-                    <div class="retraction-label">Country</div>
-                    <div class="retraction-value">United States</div>
-                </div>
-                <div class="retraction-item">
-                    <div class="retraction-label">Subject</div>
-                    <div class="retraction-value">Medicine</div>
-                </div>
-                <div class="retraction-item">
-                    <div class="retraction-label">Institution</div>
-                    <div class="retraction-value">Harvard University</div>
-                </div>
-                <div class="retraction-item">
-                    <div class="retraction-label">Publisher</div>
-                    <div class="retraction-value">Elsevier</div>
-                </div>
-                <div class="retraction-item">
-                    <div class="retraction-label">Retraction Date</div>
-                    <div class="retraction-value">2023-05-15</div>
-                </div>
-                <div class="retraction-item">
-                    <div class="retraction-label">Author</div>
-                    <div class="retraction-value">John Smith</div>
-                </div>
-                <div class="retraction-item">
-                    <div class="retraction-label">Reason for Retraction</div>
-                    <div class="retraction-value">Data manipulation</div>
-                </div>
-            </div>
         </aside>
 
         <!-- Main Content -->
         <main class="dashboard-main">
-
-            <!-- Analysis Content -->
             <div class="analysis-content">
-                <h2 id="analysis-title">Retraction Analysis Based on Country</h2>
-                
-                <!-- Filters -->
-                <div class="filters">
-                    <div class="filter-group">
-                        <div class="filter-item">
-                            <label>Country</label>
-                            <select id="country-filter">
-                                <option value="">Select Country</option>
-                                <option value="usa">United States</option>
-                                <option value="uk">United Kingdom</option>
-                                <option value="china">China</option>
-                                <option value="india">India</option>
-                            </select>
-                        </div>
-                        
-                        <div class="filter-item">
-                            <label>Year</label>
-                            <select id="year-filter">
-                                <option value="">Select Year</option>
-                                <option value="2023">2023</option>
-                                <option value="2022">2022</option>
-                                <option value="2021">2021</option>
-                            </select>
-                        </div>
-                        
-                        <div class="filter-item">
-                            <label>Retraction Reason</label>
-                            <select id="reason-filter">
-                                <option value="">Select Reason</option>
-                                <option value="misconduct">Research Misconduct</option>
-                                <option value="error">Error in Data</option>
-                                <option value="plagiarism">Plagiarism</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1 class="page-title">Retraction Analysis Based on Country</h1>
+                    <div class="page-subtitle">
+                        <span>Analysis</span>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Country Distribution</span>
                     </div>
                 </div>
 
-                <!-- Graph Area -->
-                <div class="graph-container">
-                    <div class="graph">
-                        <!-- Graph will be inserted here -->
+                <!-- Filters Section -->
+                <div class="filters-section">
+                    <div class="filter-card">
+                        <label class="filter-label">Select Country</label>
+                        <select class="filter-input" multiple>
+                            <option value="usa">United States</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="china">China</option>
+                            <option value="india">India</option>
+                            <option value="germany">Germany</option>
+                            <option value="japan">Japan</option>
+                            <option value="france">France</option>
+                        </select>
                     </div>
-                    <div class="graph-info">
-                        <div class="description-box">
-                            <h3>Graph Description</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                        <div class="action-buttons">
-                            <button class="btn-bookmark">
-                                <i class="fas fa-bookmark"></i>
-                                Bookmark
-                            </button>
-                            <button class="btn-download">
-                                <i class="fas fa-download"></i>
-                                Download Graph
-                            </button>
+
+                    <div class="filter-card">
+                        <label class="filter-label">Year Range</label>
+                        <div class="year-range-container">
+                            <input type="range" class="filter-input" min="2000" max="2024" value="2024">
+                            <div class="range-values">
+                                <span>2000</span>
+                                <span>2024</span>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="filter-card">
+                        <label class="filter-label">Reason for Retraction</label>
+                        <select class="filter-input">
+                            <option value="">All Reasons</option>
+                            <option value="misconduct">Research Misconduct</option>
+                            <option value="error">Error in Data</option>
+                            <option value="plagiarism">Plagiarism</option>
+                            <option value="duplicate">Duplicate Publication</option>
+                            <option value="ethics">Ethical Violations</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Graph Section -->
+                <div class="graph-section">
+                    <div class="graph-header">
+                        <h2 class="graph-title">Distribution of Retractions by Country</h2>
+                        <div class="graph-controls">
+                            <select class="filter-input">
+                                <option value="bar">Bar Chart</option>
+                                <option value="line">Line Chart</option>
+                                <option value="pie">Pie Chart</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="graph-container">
+                        <canvas id="analysisChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Description Section -->
+                <div class="description-section">
+                    <div class="description-header">
+                        <h3 class="description-title">Analysis Insights</h3>
+                    </div>
+                    <p class="description-text">
+                        This visualization shows the distribution of retractions across different countries. 
+                        The data reveals patterns in research integrity across geographical regions, helping 
+                        identify trends and potential areas for improvement in academic publishing.
+                    </p>
+                </div>
+
+                <!-- Action Bar -->
+                <div class="action-bar">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-download"></i>
+                        Download Graph
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-bookmark"></i>
+                        Bookmark Analysis
+                    </button>
                 </div>
             </div>
         </main>
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Handle sidebar navigation and dynamic content updates
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all items
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // Get the section title
+                const title = this.getAttribute('data-title');
+                
+                // Update page header
+                document.querySelector('.page-title').textContent = `Retraction Analysis Based on ${title}`;
+                document.querySelector('.page-subtitle span:last-child').textContent = `${title} Distribution`;
+                
+                // Add loading state
+                document.querySelector('.graph-container').classList.add('skeleton');
+                
+                // Simulate data loading
+                setTimeout(() => {
+                    document.querySelector('.graph-container').classList.remove('skeleton');
+                    // Here you would typically update the graph with new data
+                }, 1000);
+            });
+        });
+
+        // Initialize Chart.js
+        const ctx = document.getElementById('analysisChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['USA', 'UK', 'China', 'India', 'Germany', 'Japan'],
+                datasets: [{
+                    label: 'Number of Retractions',
+                    data: [65, 45, 80, 35, 30, 25],
+                    backgroundColor: '#4510C4',
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: true,
+                            color: '#f0f0f0'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html> 
